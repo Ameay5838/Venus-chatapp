@@ -5,11 +5,12 @@ from rest_framework.response import Response
 from .schema import server_list_docs
 from rest_framework.exceptions import ValidationError, AuthenticationFailed
 from django.db.models import Count
-
+from rest_framework.permissions import IsAuthenticated
 
 class ServerListViewSet(viewsets.ViewSet):
     # Define the base queryset for the viewset
     queryset = Server.objects.all()
+    #permission_classes = [IsAuthenticated]
     
     @server_list_docs
     # Define the list method to handle GET requests
